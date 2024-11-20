@@ -1,0 +1,64 @@
+/* General Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 65px;
+  background-color: #354d9a;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Left Section: Logo and Links */
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 40px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: rgb(236, 236, 236);
+  font-size: 1rem;
+}
+
+.nav-links li a:hover {
+  color: #9db4ff;
+}
+
+/* Right Section: User Profile */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.username {
+  font-size: 1rem;
+  text-decoration: underline;
+}
