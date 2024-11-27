@@ -1,7 +1,7 @@
 import { Heading, Text } from "@radix-ui/themes";
 import SearchBox from "../UI/SearchBox";
 
-const Header = () => {
+const Header = ({ onSearch }) => {
   return (
     <>
       <Heading className="pb-1">Security Update Guide</Heading>
@@ -12,7 +12,7 @@ const Header = () => {
         and provides the information here as part of the ongoing effort to help
         you manage security risks and help keep your systems protected.
       </Text>
-      <SearchBox />
+      <SearchBox onSearch={ onSearch } />
     </>
   );
 };
