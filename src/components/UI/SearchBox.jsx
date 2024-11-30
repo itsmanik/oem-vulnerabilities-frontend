@@ -1,4 +1,15 @@
-const SearchBox = () => {
+import { useState } from "react";
+
+const SearchBox = ({ onSearch }) => {
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+    onSearch(e.target.value); 
+  };
+
+
   return (
     <div className="mt-4 mb-3">
       <fieldset className="w-full space-y-1 dark:text-gray-800">
@@ -9,6 +20,7 @@ const SearchBox = () => {
           <span className="absolute inset-y-0 left-0 flex items-center pl-2">
             <button
               type="button"
+              onClick={() => onSearch(searchTerm)}
               title="search"
               className="p-1 focus:outline-none focus:ring"
             >
@@ -25,6 +37,8 @@ const SearchBox = () => {
             type="search"
             name="Search"
             placeholder="Search..."
+            value={searchTerm}
+            onChange={handleChange}
             className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50 focus:dark:border-violet-600"
           />
         </div>
