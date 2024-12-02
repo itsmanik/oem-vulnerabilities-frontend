@@ -4,6 +4,7 @@ import Scraper from "./components/Scraper/Scraper";
 import NotFound from "./components/Pages/NotFound";
 import Home from "./Home";
 import classes from "./App.module.css";
+import ExportData from "./components/Export/ExportData";
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
             }
           />
           <Route path="/scraper" element={<Scraper />} />
+          <Route path="/export" element={<ExportData />} />
           {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
