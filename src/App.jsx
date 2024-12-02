@@ -9,6 +9,8 @@ import Tutorials from "./components/Tutorials/Tutorials";
 import VideoPlayerPage from "./components/Tutorials/VideoPlayerPage";
 import TutorialsPage from "./components/Tutorials/TutorialsPage";
 import KnowledgeBasePage from "./components/Tutorials/KnowledgeBasePage";
+import DiscussionForumPage from "./components/Feedback/DiscussionForumPage";
+import FeedbackPage from "./components/Feedback/FeedbackPage"
 
 
 const App = () => {
@@ -35,6 +37,9 @@ const App = () => {
 
           <Route path="/tutorials" element={<TutorialsPage />} />
           <Route path="/knowledge-base" element={<KnowledgeBasePage />} />
+
+          <Route path="/discussion" element={<DiscussionForumPage />} />
+          <Route path="/feedback" element={<FeedbackPage />} />
 
           {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />
