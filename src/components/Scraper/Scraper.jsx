@@ -34,6 +34,9 @@ const ScrapingPage = () => {
   
         if (current.progress < 100) {
           current.progress += Math.floor(Math.random() * 15) + 5; // Increment progress
+          if (current.progress > 100) {
+            current.progress = 100;
+          }
           return updated;
         } else {
           clearInterval(interval);
