@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from "./App.module.css";
-import TopNav from "./components/Nav/TopNav/TopNav";
 import Header from "./components/Header/Header";
 import Content from "./components/Content/Content";
 
@@ -8,11 +7,8 @@ import axiosInstance from './axios';
 
 import { useState, useEffect } from "react";
 
-
-
-
 export default function Home() {
-    const [scrapedData, setScrapedData] = useState([]); // Original data
+  const [scrapedData, setScrapedData] = useState([]); // Original data
   const [filteredData, setFilteredData] = useState([]); // Data for "All" table
 
   useEffect(() => {
@@ -39,7 +35,6 @@ export default function Home() {
 
   return (
     <div>
-      <TopNav />
       <div className={classes["main-container"]}>
         <Header onSearch={handleSearch} />
         <Content allData={filteredData} />

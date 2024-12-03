@@ -1,7 +1,7 @@
 import { Table } from "@radix-ui/themes";
 import { Text } from "@radix-ui/themes";
 
-const Vulnerabilities = () => {
+const Vulnerabilities = ( { allData } ) => {
   return (
     <>
       <Table.Root>
