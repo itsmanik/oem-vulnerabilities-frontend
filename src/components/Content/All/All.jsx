@@ -4,7 +4,6 @@ import { Text } from "@radix-ui/themes";
 import axiosInstance from "../../../axios";
 
 const All = ({ data }) => {
-  console.log(data);
 
   
   return (

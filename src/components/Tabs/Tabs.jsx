@@ -9,14 +9,14 @@ const Main = () => {
   return (
     <div className="mb-4">
       <TabNav.Root>
-        <TabNav.Link asChild active={location.pathname === "/"}>
-          <Link to="/">All</Link>
+        <TabNav.Link asChild active={location.pathname === "/vulns/all"}>
+          <Link to="/vulns/all">All</Link>
         </TabNav.Link>
-        <TabNav.Link asChild active={location.pathname === "/vulnerabilities"}>
-          <Link to="/vulnerabilities">Vulnerabilities</Link>
+        <TabNav.Link asChild active={location.pathname === "/vulns/vulnerabilities"}>
+          <Link to="/vulns/vulnerabilities">Vulnerabilities</Link>
         </TabNav.Link>
-        <TabNav.Link asChild active={location.pathname === "/advisories"}>
-          <Link to="/advisories">Advisories</Link>
+        <TabNav.Link asChild active={location.pathname === "/vulns/advisories"}>
+          <Link to="/vulns/advisories">Advisories</Link>
         </TabNav.Link>
       </TabNav.Root>
     </div>
