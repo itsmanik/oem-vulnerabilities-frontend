@@ -10,7 +10,7 @@ import VideoPlayerPage from "./components/Tutorials/VideoPlayerPage";
 import TutorialsPage from "./components/Tutorials/TutorialsPage";
 import KnowledgeBasePage from "./components/Tutorials/KnowledgeBasePage";
 import DiscussionForumPage from "./components/Feedback/DiscussionForumPage";
-import FeedbackPage from "./components/Feedback/FeedbackPage"
+import FeedbackPage from "./components/Feedback/FeedbackPage";
 
 
 const App = () => {
@@ -21,12 +21,11 @@ const App = () => {
       <div className={classes["main-container"]}>
         <Routes>
           {/* Define Routes */}
-          <Route
-            path="/"
-            element={
-              <Home />
-            }
-          />
+          {/* <Route path="/*" element={<Home />} /> */}
+          <Route path="/vulns/*" element={<Home />} />
+           
+          {/* <Route path="/advisories" element={<Home />} /> */}
+
           <Route path="/scraper" element={<Scraper />} />
           <Route path="/export" element={<ExportData />} />
           {/* <Route path="/tutorial" element={<Tutorials />} /> */}
