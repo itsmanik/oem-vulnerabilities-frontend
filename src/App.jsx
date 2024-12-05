@@ -11,6 +11,8 @@ import TutorialsPage from "./components/Tutorials/TutorialsPage";
 import KnowledgeBasePage from "./components/Tutorials/KnowledgeBasePage";
 import DiscussionForumPage from "./components/Feedback/DiscussionForumPage";
 import FeedbackPage from "./components/Feedback/FeedbackPage";
+import ReportVulnerabilityForm from "./components/Feedback/ReportVulnerabilityForm";
+import ReportedVulnerabilitiesList from "./components/Feedback/ReportedVulnerabilitiesList";
 
 
 const App = () => {
@@ -36,6 +38,9 @@ const App = () => {
 
           <Route path="/tutorials" element={<TutorialsPage />} />
           <Route path="/knowledge-base" element={<KnowledgeBasePage />} />
+
+          <Route path="/report" element={<ReportVulnerabilityForm />} />
+          <Route path="/reported" element={<ReportedVulnerabilitiesList />} />
 
           <Route path="/discussion" element={<DiscussionForumPage />} />
           <Route path="/feedback" element={<FeedbackPage />} />
