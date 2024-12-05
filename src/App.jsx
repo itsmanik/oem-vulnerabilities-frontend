@@ -13,17 +13,20 @@ import DiscussionForumPage from "./components/Feedback/DiscussionForumPage";
 import FeedbackPage from "./components/Feedback/FeedbackPage";
 import ReportVulnerabilityForm from "./components/Feedback/ReportVulnerabilityForm";
 import ReportedVulnerabilitiesList from "./components/Feedback/ReportedVulnerabilitiesList";
+import LandingPage from "./components/Home/Home"
+import AsideNav from "./components/Nav/Sidebar/AsideNav";
 
 
 const App = () => {
   
   return (
-    <>
+    <div className="bg-gray-100">
       <TopNav />
+      <AsideNav />
       <div className={classes["main-container"]}>
         <Routes>
           {/* Define Routes */}
-          {/* <Route path="/*" element={<Home />} /> */}
+          <Route path="/" element={<LandingPage/>} />
           <Route path="/vulns/*" element={<Home />} />
            
           {/* <Route path="/advisories" element={<Home />} /> */}
@@ -49,7 +52,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
-    </>
+    </div>
   );
 };
 
