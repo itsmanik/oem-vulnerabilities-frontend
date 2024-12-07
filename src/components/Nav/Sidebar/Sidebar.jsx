@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 const SidebarContext = createContext();
 
 export default function Sidebar({ children }) {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
   return (
     <>
       <aside className="h-screen relative lg:mt-12">
