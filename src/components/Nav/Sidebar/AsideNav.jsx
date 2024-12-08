@@ -23,29 +23,29 @@ const AsideNav = () => {
           <SidebarItem icon={<Home size={20} />} text="Home" location="/" />
           <SidebarItem
             icon={<Telescope size={20} />}
-            text="Explore"
-            location="/explore"
+            text="Export"
+            location="/export"
           />
           <SidebarItem
             icon={<CalendarDays size={20} />}
-            text="Events"
-            location="/events"
+            text="Vulnerabilities"
+            location="/vulns"
           />
           <SidebarItem
             icon={<BriefcaseBusiness size={20} />}
-            text="Jobs"
-            location="/jobs"
+            text="FAQ"
+            location="/knowledge-base"
           />
           <SidebarItem
             icon={<Bell size={20} />}
-            text="Notifications"
-            location="/notifications"
+            text="Tutorials"
+            location="/tutorial"
             batch
           />
           <SidebarItem
             icon={<Users size={20} />}
-            text="Connections"
-            location="/connections"
+            text="FeedBack"
+            location="/feedback"
           />
           <SidebarItem
             icon={<MicVocal size={20} />}
@@ -54,13 +54,13 @@ const AsideNav = () => {
           />
           <SidebarItem
             icon={<ChartColumnIncreasing size={20} />}
-            text="Analytics"
-            location="/analytics"
+            text="Scraping Details"
+            location="/scraper"
           />
           <SidebarItem
             icon={<MessageSquareMore size={20} />}
-            text="Messaging"
-            location="/messaging"
+            text="Threads"
+            location="/discussion"
             active={true}
           />
           <SidebarItem
@@ -77,7 +77,7 @@ const AsideNav = () => {
           <SidebarItem
             icon={<LifeBuoy size={20} />}
             text="Help"
-            location="/help"
+            location="/tutorials"
           />
         </Sidebar>
       </div>
