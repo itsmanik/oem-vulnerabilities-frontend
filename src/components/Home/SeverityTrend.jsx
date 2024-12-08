@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -10,8 +10,9 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import axiosInstance from "../../axios";
 
-// Register components
+// Register Chart.js components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -22,52 +23,96 @@ ChartJS.register(
   Legend
 );
 
-const data = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-  datasets: [
-    {
-      label: "Critical",
-      data: [30, 40, 45, 50, 55, 60],
-      borderColor: "#ff4d4f",
-      tension: 0.4,
-    },
-    {
-      label: "High",
-      data: [50, 60, 70, 80, 85, 90],
-      borderColor: "#faad14",
-      tension: 0.4,
-    },
-  ],
-};
+const SeverityTrend = () => {
+  const [chartData, setChartData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-const options = {
-  responsive: true,
-  maintainAspectRatio: false, // Ensures the graph height can be controlled
-  plugins: {
-    legend: {
-      position: "top",
-    },
-  },
-  scales: {
-    x: {
-      grid: {
-        display: false, // Optionally hide gridlines on x-axis for a cleaner look
+  useEffect(() => {
+    const fetchVulnerabilityData = async () => {
+      try {
+        const response = await axiosInstance.get(
+          "/api/home/vulnerabilities_per_month"
+        );
+
+        const apiData = response.data;
+
+        // Extract unique months and severity labels
+        const months = apiData.map((item) => item.month);
+        const severities = ["Critical", "High", "Medium"]; // Adjust as needed for your severity levels
+
+        // Map severity data to datasets
+        const datasets = severities.map((severity) => ({
+          label: severity,
+          data: months.map((month) => {
+            const monthDetails = apiData.find((item) => item.month === month);
+            const severityDetail =
+              monthDetails?.details.find((d) => d.severity === severity) || {};
+            return severityDetail.count || 0;
+          }),
+          borderColor: severity === "Critical" ? "#ff4d4f" : severity === "High" ? "#faad14" : "#52c41a",
+          tension: 0.4,
+        }));
+
+        // Prepare chart data
+        setChartData({
+          labels: months,
+          datasets,
+        });
+      } catch (err) {
+        setError("Failed to fetch data.");
+        console.error("Error fetching vulnerability data:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchVulnerabilityData();
+  }, []);
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false, // Ensures the graph height can be controlled
+    plugins: {
+      legend: {
+        position: "top",
       },
     },
-    y: {
-      beginAtZero: true,
+    scales: {
+      x: {
+        grid: {
+          display: false, // Optionally hide gridlines on x-axis for a cleaner look
+        },
+      },
+      y: {
+        beginAtZero: true,
+      },
     },
-  },
-};
+  };
 
-const SeverityTrend = () => {
+  if (isLoading) {
+    return (
+      <div className="bg-white h-full shadow rounded-lg flex items-center justify-center">
+        <p className="text-gray-500">Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="bg-white h-full shadow rounded-lg flex items-center justify-center">
+        <p className="text-red-500">{error}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white h-full shadow rounded-lg p-4 px-6">
       <h3 className="text-lg font-semibold text-gray-800 mb-4">
         Vulnerability Severity Trend
       </h3>
       <div className="h-[250px]">
-        <Line data={data} options={options} />
+        <Line data={chartData} options={options} />
       </div>
     </div>
   );

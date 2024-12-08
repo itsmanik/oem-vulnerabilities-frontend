@@ -1,28 +1,55 @@
-import React from "react";
-import { Badge, Flex } from "@radix-ui/themes";
+import React, { useEffect, useState } from "react";
+import { Badge } from "@radix-ui/themes";
+import axiosInstance from "../../axios";
 
 const RecentUpdates = () => {
-  const updates = [
-    {
-      id: 1,
-      name: "Vulnerability X",
-      date: "2024-12-01",
-      severity: "Critical",
-    },
-    { id: 2, name: "Vulnerability Y", date: "2024-11-30", severity: "High" },
-    { id: 3, name: "Vulnerability Z", date: "2024-11-29", severity: "Low" },
-    { id: 3, name: "Vulnerability Z", date: "2024-11-29", severity: "Low" },
-    { id: 3, name: "Vulnerability Z", date: "2024-11-29", severity: "High" },
-    { id: 3, name: "Vulnerability Z", date: "2024-11-29", severity: "Low" },
-    { id: 3, name: "Vulnerability Z", date: "2024-11-29", severity: "Critical" },
-    { id: 3, name: "Vulnerability Z", date: "2024-11-29", severity: "High" },
-  ];
+  const [updates, setUpdates] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const severityColors = {
     Critical: "red",
     High: "yellow",
     Low: "green",
   };
+
+  useEffect(() => {
+    const fetchRecentUpdates = async () => {
+      try {
+        const response = await axiosInstance.get("/api/home/vulnerabilities/recent");
+        const data = response.data.map((update, index) => ({
+          id: index + 1, // Generate a unique ID for each update
+          name: update.vulnerability,
+          date: update.date,
+          severity: update.severity_level,
+        }));
+        setUpdates(data);
+      } catch (err) {
+        setError("Failed to fetch recent updates.");
+        console.error("Error fetching recent updates:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchRecentUpdates();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="bg-white h-full border-2 border-gray-300 rounded-lg flex items-center justify-center">
+        <p className="text-gray-500">Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="bg-white h-full border-2 border-gray-300 rounded-lg flex items-center justify-center">
+        <p className="text-red-500">{error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white h-full border-2 border-gray-300 rounded-lg">
@@ -39,9 +66,7 @@ const RecentUpdates = () => {
               <p className="text-md font-medium text-gray-900">{update.name}</p>
               <p className="text-sm text-gray-500">{update.date}</p>
             </div>
-            <Badge color={severityColors[update.severity]}>
-              {update.severity}
-            </Badge>
+            <Badge color={severityColors[update.severity]}>{update.severity}</Badge>
           </li>
         ))}
       </ul>
