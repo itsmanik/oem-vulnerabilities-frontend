@@ -49,8 +49,8 @@ const AsideNav = () => {
           />
           <SidebarItem
             icon={<MicVocal size={20} />}
-            text="Announcements"
-            location="/announcements"
+            text="Report Vulnerability"
+            location="/report"
           />
           <SidebarItem
             icon={<ChartColumnIncreasing size={20} />}
@@ -65,8 +65,8 @@ const AsideNav = () => {
           />
           <SidebarItem
             icon={<User size={20} />}
-            text="Profile"
-            location="/profile"
+            text="Reported Vulnerabilities"
+            location="/reported"
           />
           <hr className="my-3" />
           <SidebarItem
