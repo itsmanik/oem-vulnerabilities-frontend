@@ -17,10 +17,9 @@ import LandingPage from "./components/Home/Home";
 import AsideNav from "./components/Nav/Sidebar/AsideNav";
 import Register from "./components/Auth/Register";
 import LogIn from "./components/Auth/Login";
-
+import AdminPage from "./components/Admin/AdminPage";
 
 const App = () => {
-  
   return (
     <div className="bg-gray-100">
       <TopNav />
@@ -28,12 +27,11 @@ const App = () => {
       <div className={classes["main-container"]}>
         <Routes>
           {/* Define Routes */}
-          <Route path="/" element={<LandingPage/>} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/vulns/*" element={<Home />} />
-           
+
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LogIn />} />
-          
 
           <Route path="/scraper" element={<Scraper />} />
           <Route path="/export" element={<ExportData />} />
@@ -51,6 +49,7 @@ const App = () => {
 
           <Route path="/discussion" element={<DiscussionForumPage />} />
           <Route path="/feedback" element={<FeedbackPage />} />
+          <Route path="/admin" element={<AdminPage />} />
 
           {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />

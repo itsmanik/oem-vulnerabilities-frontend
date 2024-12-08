@@ -37,10 +37,10 @@ const Dashboard = () => {
           <SeverityTrend />
         </div>
       </div>
-      <div className="mt-8">
+      <div className="mt-4 mb-4">
         <OemMonitoringTable />
-        <VulnerabilityChart />
       </div>
+        <VulnerabilityChart />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
         <Heatmap />
       </div>
