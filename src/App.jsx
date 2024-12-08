@@ -17,6 +17,7 @@ import LandingPage from "./components/Home/Home";
 import AsideNav from "./components/Nav/Sidebar/AsideNav";
 import Register from "./components/Auth/Register";
 import LogIn from "./components/Auth/Login";
+import AddWebsite from "./components/Admin/AddWebsite";
 
 
 const App = () => {
@@ -33,7 +34,8 @@ const App = () => {
            
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LogIn />} />
-          
+
+          <Route path="/addsite" element={<AddWebsite />} />
 
           <Route path="/scraper" element={<Scraper />} />
           <Route path="/export" element={<ExportData />} />
