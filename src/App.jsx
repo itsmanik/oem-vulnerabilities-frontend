@@ -13,8 +13,10 @@ import DiscussionForumPage from "./components/Feedback/DiscussionForumPage";
 import FeedbackPage from "./components/Feedback/FeedbackPage";
 import ReportVulnerabilityForm from "./components/Feedback/ReportVulnerabilityForm";
 import ReportedVulnerabilitiesList from "./components/Feedback/ReportedVulnerabilitiesList";
-import LandingPage from "./components/Home/Home"
+import LandingPage from "./components/Home/Home";
 import AsideNav from "./components/Nav/Sidebar/AsideNav";
+import Register from "./components/Auth/Register";
+import LogIn from "./components/Auth/Login";
 
 
 const App = () => {
@@ -29,7 +31,9 @@ const App = () => {
           <Route path="/" element={<LandingPage/>} />
           <Route path="/vulns/*" element={<Home />} />
            
-          {/* <Route path="/advisories" element={<Home />} /> */}
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<LogIn />} />
+          
 
           <Route path="/scraper" element={<Scraper />} />
           <Route path="/export" element={<ExportData />} />
