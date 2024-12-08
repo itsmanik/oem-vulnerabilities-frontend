@@ -42,20 +42,33 @@ const data = {
 
 const options = {
   responsive: true,
+  maintainAspectRatio: false, // Ensures the graph height can be controlled
   plugins: {
     legend: {
       position: "top",
+    },
+  },
+  scales: {
+    x: {
+      grid: {
+        display: false, // Optionally hide gridlines on x-axis for a cleaner look
+      },
+    },
+    y: {
+      beginAtZero: true,
     },
   },
 };
 
 const SeverityTrend = () => {
   return (
-    <div className="bg-white h-full shadow rounded-lg p-6">
+    <div className="bg-white h-full shadow rounded-lg p-4 px-6">
       <h3 className="text-lg font-semibold text-gray-800 mb-4">
         Vulnerability Severity Trend
       </h3>
-      <Line data={data} options={options} />
+      <div className="h-[250px]">
+        <Line data={data} options={options} />
+      </div>
     </div>
   );
 };

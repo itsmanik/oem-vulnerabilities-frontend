@@ -7,11 +7,11 @@ import SeverityTrend from "./SeverityTrend";
 import Heatmap from "./Heatmap";
 import FilterBar from "./FilterBar";
 import OemMonitoringTable from "./OemMonitoringTable";
-import classes from "./Dashboard.module.css"
+import classes from "./Dashboard.module.css";
 
 const Dashboard = () => {
   return (
-    <div className="p-8">
+    <div className="p-8 m-auto">
       {/* Title and Description */}
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold -mt-8 text-gray-800">
@@ -26,28 +26,24 @@ const Dashboard = () => {
       {/* Filter Bar */}
       {/* <FilterBar /> */}
       <div className={classes.dashboard}>
-        {/* Key Statistics and Recent Updates */}
-        <div className="flex justify-between flex-col gap-6">
+        <div className="h-full">
           <KeyStatistics />
+        </div>
+        <VulnerabilityPie />
+        <div className="row-span-2">
           <RecentUpdates />
         </div>
-
-        {/* Graphs Section */}
-        <div className="">
-        <SeverityTrend />
+        <div className="col-span-2 h-full">
+          <SeverityTrend />
         </div>
       </div>
       <div className="mt-8">
-        <VulnerabilityPie />
         <OemMonitoringTable />
+        <VulnerabilityChart />
       </div>
-      {/* Additional Graphs */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-          <VulnerabilityChart />
         <Heatmap />
       </div>
-
-      {/* OEM Monitoring Table */}
     </div>
   );
 };
