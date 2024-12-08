@@ -5,6 +5,11 @@ const OemMonitoringTable = () => {
     { name: "OEM A", vulnerabilities: 120 },
     { name: "OEM B", vulnerabilities: 95 },
     { name: "OEM C", vulnerabilities: 80 },
+    { name: "OEM C", vulnerabilities: 80 },
+    { name: "OEM C", vulnerabilities: 80 },
+    { name: "OEM C", vulnerabilities: 80 },
+    { name: "OEM C", vulnerabilities: 80 },
+    { name: "OEM C", vulnerabilities: 80 },
   ];
 
   return (
