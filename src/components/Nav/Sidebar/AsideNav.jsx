@@ -1,17 +1,18 @@
 import {
   Home,
-  BriefcaseBusiness,
-  MessageSquareMore,
-  ChartColumnIncreasing,
+  MessageCircleQuestion,
+  Waves,
+  NotebookTabs,
   Telescope,
-  Bell,
-  CalendarDays,
-  Users,
+  GraduationCap,
+  TriangleAlert,
+  FilePen,
   Building2,
-  MicVocal,
+  FlagTriangleRight,
   LifeBuoy,
-  User,
+  BadgePlus,
   Settings,
+  ArrowRightFromLine
 } from "lucide-react";
 import Sidebar, { SidebarItem } from "./Sidebar";
 
@@ -22,49 +23,49 @@ const AsideNav = () => {
         <Sidebar>
           <SidebarItem icon={<Home size={20} />} text="Home" location="/" />
           <SidebarItem
-            icon={<Telescope size={20} />}
+            icon={<ArrowRightFromLine size={20} />}
             text="Export"
             location="/export"
           />
           <SidebarItem
-            icon={<CalendarDays size={20} />}
+            icon={<TriangleAlert size={20} />}
             text="Vulnerabilities"
             location="/vulns"
           />
           <SidebarItem
-            icon={<BriefcaseBusiness size={20} />}
+            icon={<MessageCircleQuestion size={20} />}
             text="FAQ"
             location="/knowledge-base"
           />
           <SidebarItem
-            icon={<Bell size={20} />}
+            icon={<GraduationCap size={20} />}
             text="Tutorials"
             location="/tutorial"
             batch
           />
           <SidebarItem
-            icon={<Users size={20} />}
+            icon={<FilePen size={20} />}
             text="FeedBack"
             location="/feedback"
           />
           <SidebarItem
-            icon={<MicVocal size={20} />}
+            icon={<FlagTriangleRight size={20} />}
             text="Report Vulnerability"
             location="/report"
           />
           <SidebarItem
-            icon={<ChartColumnIncreasing size={20} />}
+            icon={<NotebookTabs size={20} />}
             text="Scraping Details"
             location="/scraper"
           />
           <SidebarItem
-            icon={<MessageSquareMore size={20} />}
+            icon={<Waves size={20} />}
             text="Threads"
             location="/discussion"
             active={true}
           />
           <SidebarItem
-            icon={<User size={20} />}
+            icon={<BadgePlus size={20} />}
             text="Reported Vulnerabilities"
             location="/reported"
           />
