@@ -25,7 +25,7 @@ const EmailInputWithOTP = ({ email, setEmail, isOtpVerified, setIsOtpVerified })
   const handleOtpVerification = async () => {
     setIsLoading(true);
     try {
-      const response = await axiosInstance.post('/auth/verify-otp', {
+      const response = await axiosInstance.post('/auth/verify_otp', {
         email,
         otp: localOtp,
       });
