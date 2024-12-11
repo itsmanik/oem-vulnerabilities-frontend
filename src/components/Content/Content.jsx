@@ -17,6 +17,7 @@ const DynamicContent = ({ allData }) => {
 
 const Content = ({ allData }) => {
 
+    console.log("Content jsx",allData);
   return (
     <>
       <Tabs />

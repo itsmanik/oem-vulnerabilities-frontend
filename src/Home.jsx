@@ -28,7 +28,12 @@ export default function Home() {
     console.log("Query:", query);
     const lowerCaseQuery = query.toLowerCase();
     const filtered = scrapedData.filter((item) =>
-      item.product_name.toLowerCase().includes(lowerCaseQuery)
+      item.product_name_version.toLowerCase().includes(lowerCaseQuery) ||
+      item.vendor.toLowerCase().includes(lowerCaseQuery) ||
+      item.severity_level.toLowerCase().includes(lowerCaseQuery) ||
+      item.vulnerability.toLowerCase().includes(lowerCaseQuery) ||
+      item.published_date.toLowerCase().includes(lowerCaseQuery) ||     
+      item.reference.toLowerCase().includes(lowerCaseQuery)
     );
     setFilteredData(filtered);
   };
