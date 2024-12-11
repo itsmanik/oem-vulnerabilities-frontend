@@ -40,10 +40,10 @@ const Dashboard = () => {
       <div className="mt-4 mb-4">
         <OemMonitoringTable />
       </div>
-        <VulnerabilityChart />
+        {/* <VulnerabilityChart />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
         <Heatmap />
-      </div>
+      </div> */}
     </div>
   );
 };
