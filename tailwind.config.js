@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         navColor: "#1f2937",
+        darkNavColor: "#101824"
       },
     },
   },
