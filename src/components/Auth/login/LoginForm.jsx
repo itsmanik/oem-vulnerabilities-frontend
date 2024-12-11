@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import axiosInstance from '../../../axios';
 import { useNavigate } from 'react-router-dom';
 
-const RegisterForm = () => {
+const LoginForm = () => {
   const [formData, setFormData] = useState({
-    username: '',
     email: '',
     password: '',
   });
@@ -21,14 +20,15 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosInstance.post('/auth/register', formData);
-      console.log('Form submitted:', response.data);
-      setMessage(response.data.message || 'Registration successful!'); // Set the success message
-      navigate('/login');
+      const response = await axiosInstance.post('/auth/login', formData);
+      console.log('Login successful:', response.data);
+      // Save token in localStorage
+      localStorage.setItem('access_token', response.data.access_token);
+      setMessage('Login successful!'); // Set success message
+      navigate('/'); // Navigate to home page
     } catch (error) {
-      console.error('There was an error registering!', error);
-      // Display an error message if registration fails
-      setMessage(error.response?.data?.error || 'An error occurred. Please try again.');
+      console.error('Login error!', error);
+      setMessage(error.response?.data?.error || 'An error occurred. Please try again.'); // Display error message
     }
   };
 
@@ -38,33 +38,14 @@ const RegisterForm = () => {
         {message && (
           <div
             className={`text-sm p-4 mb-6 rounded-md ${
-              message.includes('') ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'
+              message.includes('successful') ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'
             }`}
           >
             {message}
           </div>
         )}
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Register</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Username Field */}
-          <div>
-            <label
-              htmlFor="username"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              placeholder="Enter your username"
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700"
-              required
-            />
-          </div>
           {/* Email Field */}
           <div>
             <label
@@ -108,7 +89,7 @@ const RegisterForm = () => {
             type="submit"
             className="w-full bg-blue-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all"
           >
-            Register
+            Login
           </button>
         </form>
       </div>
@@ -116,4 +97,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default LoginForm;

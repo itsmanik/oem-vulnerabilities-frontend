@@ -39,7 +39,7 @@ const SeverityTrend = () => {
 
         // Extract unique months and severity labels
         const months = apiData.map((item) => item.month);
-        const severities = ["Critical", "High", "Medium"]; // Adjust as needed for your severity levels
+        const severities = ["Critical", "High"]; // Adjusted to remove Medium
 
         // Map severity data to datasets
         const datasets = severities.map((severity) => ({
@@ -50,7 +50,7 @@ const SeverityTrend = () => {
               monthDetails?.details.find((d) => d.severity === severity) || {};
             return severityDetail.count || 0;
           }),
-          borderColor: severity === "Critical" ? "#ff4d4f" : severity === "High" ? "#faad14" : "#52c41a",
+          borderColor: severity === "Critical" ? "#ff4d4f" : "#faad14",
           tension: 0.4,
         }));
 
