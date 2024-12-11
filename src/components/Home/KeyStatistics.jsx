@@ -15,8 +15,8 @@ const KeyStatistics = () => {
     const fetchStatistics = async () => {
       try {
         const response = await axiosInstance.get("/api/home/vulnerabilities/number_breakdown");
-        const { total_vulnerabilities, severity_breakdown } = response.data;
-        console.log(response.data)
+        const { total_vulnerabilities, severity_breakdown, monitored_oems } = response.data;
+        console.log(response.data);
         // Map severity levels to a dictionary
         const severityMap = severity_breakdown.reduce((acc, item) => {
           acc[item.severity.toLowerCase()] = item.count;
@@ -28,7 +28,7 @@ const KeyStatistics = () => {
           totalVulnerabilities: total_vulnerabilities,
           critical: severityMap.critical || 0,
           high: severityMap.high || 0,
-          medium: severityMap.medium, // Example static value, update if fetched dynamically
+          monitoredOEMs: monitored_oems || 0,
         });
       } catch (error) {
         setError("Failed to fetch key statistics.");
@@ -83,9 +83,9 @@ const KeyStatistics = () => {
             </td>
           </tr>
           <tr className="bg-gray-100">
-            <td className="py-1 p-1 text-gray-600">Medium</td>
+            <td className="py-1 p-1 text-gray-600">Monitored OEMs</td>
             <td className="py-1 p-1 font-bold text-gray-800 text-right">
-              {statistics.medium}
+              {statistics.monitoredOEMs}
             </td>
           </tr>
         </tbody>

@@ -107,9 +107,8 @@ const Login = () => {
             </p>
           </div>
         </form>
-      </div>
     </div>
   );
 };
 
-export default Login;
+export default LogIn;
