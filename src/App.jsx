@@ -19,6 +19,7 @@ import Register from "./components/Auth/Register";
 import LogIn from "./components/Auth/Login";
 import AddWebsite from "./components/Admin/AddWebsite";
 import AdminPage from "./components/Admin/AdminPage";
+import HelpPage from "./components/Help/HelpPage";
 
 const App = () => {
   return (
@@ -53,6 +54,7 @@ const App = () => {
           <Route path="/discussion" element={<DiscussionForumPage />} />
           <Route path="/feedback" element={<FeedbackPage />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/help" element={<HelpPage />} />
 
           {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />
