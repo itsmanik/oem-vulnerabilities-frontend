@@ -37,13 +37,13 @@ const Dashboard = () => {
           <SeverityTrend />
         </div>
       </div>
-      <div className="mt-4 mb-4">
+      {/* <div className="mt-4 mb-4">
         <OemMonitoringTable />
-      </div>
-        <VulnerabilityChart />
+      </div> */}
+        {/* <VulnerabilityChart />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
         <Heatmap />
-      </div>
+      </div> */}
     </div>
   );
 };
