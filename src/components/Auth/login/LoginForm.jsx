@@ -44,7 +44,12 @@ const LoginForm = () => {
             {message}
           </div>
         )}
+<<<<<<< HEAD:src/components/Auth/register/RegisterForm.jsx
+        <h2 className="text-2xl font-bold mb-1 text-center text-gray-800">Register</h2>        
+        <p className="text-sm dark:text-gray-600 mb-6 text-center">Create an account to continue</p>
+=======
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Login</h2>
+>>>>>>> aeef457a3cc744f622eee2df594bf57f4c131573:src/components/Auth/login/LoginForm.jsx
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email Field */}
           <div>
@@ -87,7 +92,7 @@ const LoginForm = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all"
+            className="w-full bg-navColor text-white py-2 px-4 rounded-md shadow-md hover:bg-darkNavColor focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all"
           >
             Login
           </button>
