@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Table } from "@radix-ui/themes";
 import { Text } from "@radix-ui/themes";
 import axiosInstance from "../../../axios";
 
 const All = ({ data }) => {
-  {
-    console.log(data);
-  }
   return (
     <Table.Root>
       {/* Table header */}
