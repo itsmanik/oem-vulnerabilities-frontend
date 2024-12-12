@@ -24,8 +24,8 @@ export default function Sidebar({ children }) {
           expanded ? "w-64" : "w-16"
         }`}
       >
-        <nav className="h-full flex flex-col translate-y-10 text-gray-200 relative">
-          <div className="py-4 pb-2 flex justify-between p-2 items-center">
+        <nav className="h-full flex flex-col translate-y-14 text-gray-200 relative">
+          <div className="py-4 pb-2 flex justify-center p-2 items-center">
             <span
               className={`overflow-hidden transition-all ml-3 font-medium text-lightWhite ${
                 expanded ? "block" : "hidden"
@@ -35,7 +35,7 @@ export default function Sidebar({ children }) {
             </span>
             <button
               onClick={() => setExpanded((curr) => !curr)}
-              className="p-1.5 rounded-lg hover:bg-darkGray text-lightWhite"
+              className={`p-1.5 rounded-lg ${expanded && "ml-auto"} hover:bg-darkGray text-lightWhite`}
             >
               {expanded ? <ChevronFirst size={20} /> : <ChevronLast size={20} />}
             </button>

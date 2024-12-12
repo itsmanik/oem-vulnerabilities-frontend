@@ -19,7 +19,7 @@ import Register from "./components/Auth/Register";
 import LogIn from "./components/Auth/Login";
 import AddWebsite from "./components/Admin/AddWebsite";
 import AdminPage from "./components/Admin/AdminPage";
-import MoreDetails from "./components/Content/Detail/MoreDetails";
+import MoreDetails from "./components/Pages/MoreDetails";
 import SettingPage from "./components/Setting/Settingpage.jsx"; 
 import HelpPage from "./components/Help/HelpPage";// Import the SettingPage component
 
