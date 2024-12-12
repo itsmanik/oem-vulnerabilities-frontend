@@ -54,3 +54,18 @@
 .dropdown button:hover {
   background: #f3f4f6;
 }
+
+
+.navbar {
+  background-color: #202c34; /* Tailwind's bg-gray-800 */
+}
+
+.nav-links a {
+  color: #f6f6f6; /* Tailwind's text-gray-300 */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff; /* Tailwind's text-white */
+}

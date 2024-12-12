@@ -48,11 +48,13 @@ const AsideNav = () => {
             text="FeedBack"
             location="/feedback"
           />
-          <SidebarItem
+        <SidebarItem
             icon={<FlagTriangleRight size={20} />}
             text="Report Vulnerability"
             location="/report"
-          />
+          /> 
+
+
           <SidebarItem
             icon={<NotebookTabs size={20} />}
             text="Scraping Details"
@@ -64,11 +66,12 @@ const AsideNav = () => {
             location="/discussion"
             active={true}
           />
-          <SidebarItem
+         {/* <SidebarItem
             icon={<BadgePlus size={20} />}
             text="Reported Vulnerabilities"
             location="/reported"
-          />
+          />*/}
+          
           <hr className="my-3" />
           <SidebarItem
             icon={<Settings size={20} />}
