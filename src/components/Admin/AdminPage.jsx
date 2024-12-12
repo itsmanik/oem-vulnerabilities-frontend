@@ -127,7 +127,7 @@ const AdminPage = () => {
     try {
       const response = await axiosInstance.get("/api/admin/dashboard");
       setData(response.data);
-      // console.log(response.data);
+      console.log(response.data);
     } catch(error) {
       console.log(error);
     }
@@ -171,7 +171,7 @@ const AdminPage = () => {
                   Websites Included
                 </h2>
                 <p className="text-3xl font-bold text-indigo-600">
-                  {websitesData.length}
+                  {data.count}
                 </p>
               </div>
             </div>

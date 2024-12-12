@@ -12,6 +12,8 @@ const AddWebsite = () => {
       contains_date: false,
       is_it: true,
       is_official: true,
+      is_rss: false,
+      contains_cve: false,
     },
   });
 
@@ -38,7 +40,10 @@ const AddWebsite = () => {
     e.preventDefault();
 
     try {
-      const response = await axiosInstance.post("/api/admin/add-website", formData);
+      const response = await axiosInstance.post(
+        "/api/admin/add-website",
+        formData
+      );
       console.log("Response:", response.data);
       alert("Website added successfully!");
       // Reset form
@@ -52,10 +57,15 @@ const AddWebsite = () => {
           contains_date: false,
           is_it: true,
           is_official: true,
+          is_rss: false,
+          contains_cve: false,
         },
       });
     } catch (error) {
-      console.error("Error adding website:", error.response?.data || error.message);
+      console.error(
+        "Error adding website:",
+        error.response?.data || error.message
+      );
       alert("Failed to add the website. Please try again.");
     }
   };
@@ -122,71 +132,119 @@ const AddWebsite = () => {
           <legend className="text-sm font-medium text-gray-700 mb-2">
             Website Details
           </legend>
-          <div className="space-y-2">
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="contains_listing"
-                name="contains_listing"
-                checked={formData.options.contains_listing}
-                onChange={handleCheckboxChange}
-                className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-              />
-              <label htmlFor="contains_listing" className="ml-2 text-sm text-gray-700">
-                Contains Listing
-              </label>
+          <div className="space-y-2 flex">
+            <div>
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="contains_listing"
+                  name="contains_listing"
+                  checked={formData.options.contains_listing}
+                  onChange={handleCheckboxChange}
+                  className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                />
+                <label
+                  htmlFor="contains_listing"
+                  className="ml-2 text-sm text-gray-700"
+                >
+                  Contains Listing
+                </label>
+              </div>
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="contains_details"
+                  name="contains_details"
+                  checked={formData.options.contains_details}
+                  onChange={handleCheckboxChange}
+                  className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                />
+                <label
+                  htmlFor="contains_details"
+                  className="ml-2 text-sm text-gray-700"
+                >
+                  Contains Details
+                </label>
+              </div>
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="contains_date"
+                  name="contains_date"
+                  checked={formData.options.contains_date}
+                  onChange={handleCheckboxChange}
+                  className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                />
+                <label
+                  htmlFor="contains_date"
+                  className="ml-2 text-sm text-gray-700"
+                >
+                  Contains Date
+                </label>
+              </div>
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="is_it"
+                  name="is_it"
+                  checked={formData.options.is_it}
+                  onChange={handleCheckboxChange}
+                  className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                />
+                <label htmlFor="is_it" className="ml-2 text-sm text-gray-700">
+                  Is IT
+                </label>
+              </div>
             </div>
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="contains_details"
-                name="contains_details"
-                checked={formData.options.contains_details}
-                onChange={handleCheckboxChange}
-                className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-              />
-              <label htmlFor="contains_details" className="ml-2 text-sm text-gray-700">
-                Contains Details
-              </label>
-            </div>
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="contains_date"
-                name="contains_date"
-                checked={formData.options.contains_date}
-                onChange={handleCheckboxChange}
-                className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-              />
-              <label htmlFor="contains_date" className="ml-2 text-sm text-gray-700">
-                Contains Date
-              </label>
-            </div>
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="is_it"
-                name="is_it"
-                checked={formData.options.is_it}
-                onChange={handleCheckboxChange}
-                className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-              />
-              <label htmlFor="is_it" className="ml-2 text-sm text-gray-700">
-                Is IT
-              </label>
-            </div>
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="is_official"
-                name="is_official"
-                checked={formData.options.is_official}
-                onChange={handleCheckboxChange}
-                className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-              />
-              <label htmlFor="is_official" className="ml-2 text-sm text-gray-700">
-                Is Official
-              </label>
+            <div className="ml-20">
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="is_official"
+                  name="is_official"
+                  checked={formData.options.is_official}
+                  onChange={handleCheckboxChange}
+                  className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                />
+                <label
+                  htmlFor="is_official"
+                  className="ml-2 text-sm text-gray-700"
+                >
+                  Is Official
+                </label>
+              </div>
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="contains_cve"
+                  name="contains_cve"
+                  checked={formData.options.contains_cve}
+                  onChange={handleCheckboxChange}
+                  className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                />
+                <label
+                  htmlFor="contains_cve"
+                  className="ml-2 text-sm text-gray-700"
+                >
+                  Contains CVE?
+                </label>
+              </div>
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="is_rss"
+                  name="is_rss"
+                  checked={formData.options.is_rss}
+                  onChange={handleCheckboxChange}
+                  className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                />
+                <label
+                  htmlFor="is_rss"
+                  className="ml-2 text-sm text-gray-700"
+                >
+                  Is RSS?
+                </label>
+              </div>
             </div>
           </div>
         </fieldset>
