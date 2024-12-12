@@ -66,14 +66,33 @@ const Settingpage = () => {
     setErrorMessage("");
     setSuccessMessage("");
 
-    setTimeout(() => {
-      if (isOtpVerified) {
-        setSuccessMessage("Profile successfully updated!");
-      } else {
-        setErrorMessage("OTP verification failed. Please try again.");
-      }
+    // Prepare the data to send to the server
+    const updatedData = {};
+
+    // Only send the new email if it's provided
+    if (email) updatedData.new_email = email;
+
+    // Only send the interests if they are selected
+    if (selectedInterests.length > 0) updatedData.oems = selectedInterests;
+
+    // If no changes were made, don't send anything
+    if (!updatedData.new_email && !updatedData.oems) {
+      setErrorMessage("No updates provided!");
       setIsLoading(false);
-    }, 1500);
+      return;
+    }
+
+    // Make the API request to update profile
+    axiosInstance
+      .post("/auth/edit-profile", updatedData)
+      .then((response) => {
+        setSuccessMessage("Profile updated successfully!");
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setErrorMessage(error.response?.data?.error || "An error occurred!");
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -140,11 +159,10 @@ const Settingpage = () => {
 
         <button
           type="submit"
-          disabled={!email || !isOtpVerified || isLoading}
           className={`w-full py-2 rounded-md text-white ${
-            email && isOtpVerified && !isLoading
-              ? "bg-blue-500 hover:bg-blue-600"
-              : "bg-gray-400 cursor-not-allowed"
+            isLoading
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-600"
           }`}
         >
           {isLoading ? "Saving changes..." : "Save Changes"}
