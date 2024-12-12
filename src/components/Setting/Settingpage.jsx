@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-//import EmailInputWithOTP from '../register/EmailInputWithOTP'; // Adjusted import path
+import EmailInputWithOTP from '../Auth/register/EmailInputWithOTP'; // Adjust path if needed
+import { useState } from 'react';
 
-const SettingPage = () => {
+const Settingpage = () => {
   const [email, setEmail] = useState('');
   const [isOtpVerified, setIsOtpVerified] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +14,6 @@ const SettingPage = () => {
     setErrorMessage('');
     setSuccessMessage('');
 
-    // Simulating a successful update for demo purposes
     setTimeout(() => {
       if (isOtpVerified) {
         setSuccessMessage('Email successfully updated!');
@@ -29,7 +28,7 @@ const SettingPage = () => {
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <form onSubmit={handleSaveChanges} className="bg-white p-8 shadow-md rounded-md w-[450px]">
         <h2 className="my-3 text-4xl font-bold text-center">Edit Profile</h2>
-        <p className="text-center text-sm dark:text-gray-600 mb-6">Update your profile details</p>
+        <p className="text-center text-sm text-gray-600 mb-6">Update your profile details</p>
 
         <div className="mb-4">
           <label className="block text-gray-600 mb-2">Email</label>
@@ -41,20 +40,15 @@ const SettingPage = () => {
           />
         </div>
 
-        {errorMessage && (
-          <p className="mb-4 text-red-500 text-sm">{errorMessage}</p>
-        )}
-        
-        {successMessage && (
-          <p className="mb-4 text-green-500 text-sm">{successMessage}</p>
-        )}
+        {errorMessage && <p className="mb-4 text-red-500 text-sm">{errorMessage}</p>}
+        {successMessage && <p className="mb-4 text-green-500 text-sm">{successMessage}</p>}
 
         <button
           type="submit"
           disabled={!email || !isOtpVerified || isLoading}
           className={`w-full py-2 rounded-md text-white ${
             email && isOtpVerified && !isLoading
-              ? 'bg-navColor hover:bg-darkNavColor'
+              ? 'bg-blue-500 hover:bg-blue-600'
               : 'bg-gray-400 cursor-not-allowed'
           }`}
         >
@@ -65,4 +59,4 @@ const SettingPage = () => {
   );
 };
 
-export default SettingPage;
+export default Settingpage;
