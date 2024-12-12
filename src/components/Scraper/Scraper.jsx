@@ -23,53 +23,44 @@ const ScrapingPage = () => {
     let interval;
     setWebsites((prev) => {
       const updated = [...prev];
-      updated[index].progress = 0; // Ensure progress starts at 0
+      updated[index].progress = 0;
       return updated;
     });
-  
+
     interval = setInterval(() => {
       setWebsites((prev) => {
         const updated = [...prev];
         const current = updated[index];
-  
+
         if (current.progress < 100) {
-          current.progress += Math.floor(Math.random() * 15) + 5; // Increment progress
+          current.progress += Math.floor(Math.random() * 15) + 5;
           if (current.progress > 100) {
             current.progress = 100;
           }
           return updated;
         } else {
           clearInterval(interval);
-  
-          // Add to "Already Scraped" only if not already present
           setScrapedWebsites((prev) => {
             if (!prev.includes(current.name)) {
               return [...prev, current.name];
             }
             return prev;
           });
-  
-          // Remove from current list
           updated.splice(index, 1);
-  
-          // Set the next website to scrape
           setCurrentIndex(index >= updated.length ? 0 : index);
-  
           return updated;
         }
       });
     }, 1000);
   };
-  
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-50 to-gray-100 py-10 px-6">
+    <div className="min-h-screen bg-gradient-to-r from-blue-50 to-gray-100 py-8 px-4">
       <Timer nextScrapeTime={nextScrapeTime} />
-      <div className="max-w-5xl mx-auto space-y-10">
-        {/* Current Scraping Section */}
-        <div className="bg-white shadow-lg rounded-xl p-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Current Scraping Progress</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="max-w-4xl mx-auto space-y-8">
+        <div className="bg-white shadow-lg rounded-xl p-4 max-h-64 overflow-y-auto">
+          <h2 className="text-xl font-bold text-gray-800 mb-2">Current Scraping Progress</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {websites.map((site, index) => (
               <CircularProgress
                 key={site.name}
@@ -80,15 +71,13 @@ const ScrapingPage = () => {
             ))}
           </div>
         </div>
-
-        {/* Scraped Websites Section */}
-        <div className="bg-white shadow-lg rounded-xl p-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Already Scraped Websites</h2>
-          <div className="flex flex-wrap gap-4">
+        <div className="bg-white shadow-lg rounded-xl p-4 max-h-64 overflow-y-auto">
+          <h2 className="text-xl font-bold text-gray-800 mb-2">Already Scraped Websites</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {scrapedWebsites.map((site, index) => (
               <div
                 key={index}
-                className="bg-green-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-600 transform transition hover:scale-105"
+                className="bg-green-500 text-white px-3 py-1 rounded-lg shadow-md text-sm hover:bg-green-600 transform transition hover:scale-105"
               >
                 {site}
               </div>

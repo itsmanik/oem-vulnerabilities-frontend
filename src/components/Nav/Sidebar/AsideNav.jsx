@@ -81,7 +81,7 @@ const AsideNav = () => {
           <SidebarItem
             icon={<LifeBuoy size={20} />}
             text="Help"
-            location="/tutorials"
+            location="/help"
           />
         </Sidebar>
       </div>

@@ -39,7 +39,7 @@ const SearchBox = ({ onSearch }) => {
             placeholder="Search..."
             value={searchTerm}
             onChange={handleChange}
-            className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50 focus:dark:border-violet-600"
+            className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-white dark:text-gray-800 focus:dark:bg-gray-50 focus:dark:border-violet-600"
           />
         </div>
       </fieldset>

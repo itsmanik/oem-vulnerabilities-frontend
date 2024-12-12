@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [scrapedData, setScrapedData] = useState([]); // Original data
   const [filteredData, setFilteredData] = useState([]); // Data for "All" table
+  const [sortValue, setSortValue] = useState("");
 
   useEffect(() => {
     // Fetch data from the API
@@ -28,16 +29,28 @@ export default function Home() {
     console.log("Query:", query);
     const lowerCaseQuery = query.toLowerCase();
     const filtered = scrapedData.filter((item) =>
-      item.product_name.toLowerCase().includes(lowerCaseQuery)
+      item.product_name_version.toLowerCase().includes(lowerCaseQuery) ||
+      item.vendor.toLowerCase().includes(lowerCaseQuery) ||
+      item.severity_level.toLowerCase().includes(lowerCaseQuery) ||
+      item.vulnerability.toLowerCase().includes(lowerCaseQuery) ||
+      item.published_date.toLowerCase().includes(lowerCaseQuery) ||     
+      item.reference.toLowerCase().includes(lowerCaseQuery)
     );
     setFilteredData(filtered);
   };
 
+  const handleSortChange = (value) => {
+    console.log("Selected sort:", value);
+    setSortValue(value);
+  };
+
+  
+
   return (
     <div>
       <div className={classes["main-container"]}>
-        <Header onSearch={handleSearch} />
-        <Content allData={filteredData} />
+        <Header onSearch={handleSearch} sortValue={sortValue} onSortChange={handleSortChange} />
+        <Content allData={filteredData} sortValue={sortValue} />
       </div>
     </div>
   )

@@ -1,27 +1,24 @@
 import Tabs from "../Tabs/Tabs";
 import { Route, Routes, useParams, Navigate } from "react-router-dom";
 import All from "../Content/All/All";
-import Vulnerabilities from "./Vulnerabilities/Vulnerabilities";
-import Advisories from "./Advisories/Advisories";
+import IT from "./IT/IT";
+import OT from "./OT/OT";
 
-const DynamicContent = ({ allData }) => {
+const DynamicContent = (props) => {
   const { vulns } = useParams();
-
-
-  if (vulns === "all") return <All data={allData} />;
-  if (vulns === "vulnerabilities") return <Vulnerabilities data={allData} />;
-  if (vulns === "advisories") return <Advisories data={allData} />;
+  if (vulns === "all") return <All data={props.allData} sortValue={props.sortValue} />;
+  if (vulns === "it") return <IT data={props.allData} sortValue={props.sortValue} />;
+  if (vulns === "ot") return <OT data={props.allData} sortValue={props.sortValue} />;
 
   return <div>Not Found</div>;
 };
 
-const Content = ({ allData }) => {
-
+const Content = ({ allData, sortValue }) => {
   return (
     <>
       <Tabs />
       <Routes>
-        <Route path=":vulns" element={<DynamicContent allData={allData} />} />
+        <Route path=":vulns" element={<DynamicContent allData={allData} sortValue={sortValue} />} />
         <Route path="" element={<Navigate to="all" replace />} />
         <Route path="*" element={<div>404 - Page Not Found</div>} />
       </Routes>

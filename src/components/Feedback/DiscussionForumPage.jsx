@@ -207,7 +207,7 @@ const DiscussionForumPage = () => {
             onChange={(e) => setNewThreadTitle(e.target.value)}
           />
           <button
-            className="bg-green-600 text-white py-2 px-4 rounded mt-2"
+            className="bg-navColor hover:bg-darkNavColor text-white py-2 px-4 rounded mt-2"
             onClick={handleAddThread}
           >
             Add Thread

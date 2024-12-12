@@ -38,6 +38,8 @@ const App = () => {
 
           <Route path="/addsite" element={<AddWebsite />} />
 
+          <Route path="/details" element={<MoreDetails />} />
+
           <Route path="/scraper" element={<Scraper />} />
           <Route path="/export" element={<ExportData />} />
 
@@ -55,6 +57,7 @@ const App = () => {
           <Route path="/discussion" element={<DiscussionForumPage />} />
           <Route path="/feedback" element={<FeedbackPage />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/help" element={<HelpPage />} />
 
           <Route path="/details" element={<MoreDetails />} />
           <Route path="/setting" element={<SettingPage />} />
