@@ -32,7 +32,7 @@ const ExportData = () => {
           </p>
           <button
             onClick={() => handleExport("csv")}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="px-4 py-2 bg-[#371F35] text-white rounded hover:bg-[#723c6e]"
           >
             Download CSV
           </button>
@@ -46,7 +46,7 @@ const ExportData = () => {
           </p>
           <button
             onClick={() => handleExport("json")}
-            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+            className="px-4 py-2 bg-[#372D1F] text-white rounded hover:bg-[#6b5536]"
           >
             Download JSON
           </button>
@@ -60,7 +60,7 @@ const ExportData = () => {
           </p>
           <button
             onClick={() => handleExport("pdf")}
-            className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+            className="px-4 py-2 bg-[#1F3721] text-white rounded hover:bg-[#48814d]"
           >
             Download PDF
           </button>

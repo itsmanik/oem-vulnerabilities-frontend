@@ -19,7 +19,7 @@ import Sidebar, { SidebarItem } from "./Sidebar";
 const AsideNav = () => {
   return (
     <>
-      <div className="flex fixed left-0 top-0 text-white">
+      <div className="flex fixed z-20 left-0 top-0 text-white">
         <Sidebar>
           <SidebarItem icon={<Home size={20} />} text="Home" location="/" />
           <SidebarItem
