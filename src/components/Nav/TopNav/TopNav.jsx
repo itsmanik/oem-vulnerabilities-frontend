@@ -10,7 +10,7 @@ const TopNav = () => {
   };
 
   return (
-    <nav className="navbar z-50 fixed top-0 left-0 w-full bg-navColor shadow-md flex justify-between items-center px-6 py-4 text-gray-200">
+    <nav className="navbar z-50 fixed top-0 left-0 w-full bg-navColor flex justify-between items-center px-6 py-4 text-gray-200">
       {/* Left Section: Navigation Links */}
       <div className="navbar-left">
         <ul className="nav-links flex space-x-6 ml-10">
