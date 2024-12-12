@@ -13,14 +13,14 @@ const FeedbackPage = () => {
   };
 
   return (
-    <div className="min-h-screen z- bg-gray-50 p-8">
+    <div className="min-h-screen bg-[#EDF4FC] flex items-center justify-center">
       {submitted ? (
-        <div className="bg-green-100 text-green-700 p-4 rounded">
+        <div className="bg-green-100 text-green-700 p-4 rounded max-w-lg text-center">
           Thank you for your feedback! We appreciate your input.
         </div>
       ) : (
         <form
-          className="bg-white p-6 rounded shadow-md max-w-lg mx-auto"
+          className="bg-white p-6 rounded shadow-md max-w-lg w-full"
           onSubmit={handleSubmit}
         >
           <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">Feedback</h1>
@@ -57,7 +57,7 @@ const FeedbackPage = () => {
           </div>
           <button
             type="submit"
-            className="bg-navColor hover:bg-darkNavColor text-white py-2 px-4 rounded"
+            className="bg-navColor hover:bg-darkNavColor text-white py-2 px-4 rounded w-full"
           >
             Submit Feedback
           </button>
