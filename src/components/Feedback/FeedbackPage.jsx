@@ -24,6 +24,7 @@ const FeedbackPage = () => {
           className="bg-white p-6 rounded shadow-md max-w-lg mx-auto"
           onSubmit={handleSubmit}
         >
+          <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">Feedback</h1>
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -57,7 +58,7 @@ const FeedbackPage = () => {
           </div>
           <button
             type="submit"
-            className="bg-blue-600 text-white py-2 px-4 rounded"
+            className="bg-navColor hover:bg-darkNavColor text-white py-2 px-4 rounded"
           >
             Submit Feedback
           </button>
