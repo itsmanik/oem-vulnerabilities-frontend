@@ -12,7 +12,7 @@ const Header = ({ onSearch }) => {
         and provides the information here as part of the ongoing effort to help
         you manage security risks and help keep your systems protected.
       </Text>
-      <SearchBox onSearch={ onSearch } />
+      <SearchBox onSearch={ onSearch }/>
     </>
   );
 };
