@@ -20,7 +20,8 @@ import LogIn from "./components/Auth/Login";
 import AddWebsite from "./components/Admin/AddWebsite";
 import AdminPage from "./components/Admin/AdminPage";
 import MoreDetails from "./components/Content/Detail/MoreDetails";
-import SettingPage from "./components/Setting/Settingpage.jsx"; // Import the SettingPage component
+import SettingPage from "./components/Setting/Settingpage.jsx"; 
+import HelpPage from "./components/Help/HelpPage";// Import the SettingPage component
 
 const App = () => {
   return (
