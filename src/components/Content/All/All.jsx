@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "@radix-ui/themes";
 import { Text } from "@radix-ui/themes";
+import { Link } from "react-router-dom";
 
 const All = ({ data, sortValue }) => {
   // Sorting function
@@ -58,7 +59,7 @@ const All = ({ data, sortValue }) => {
             </Table.Cell>
             <Table.Cell>
               <Text size={"1"} className="text-blue-500">
-                <a href="">{item.reference}</a>
+                <Link to={`/details/${item.id}`}>View Details</Link>
               </Text>
             </Table.Cell>
           </Table.Row>
