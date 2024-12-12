@@ -1,130 +1,66 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+//import EmailInputWithOTP from '../register/EmailInputWithOTP'; // Adjusted import path
 
 const SettingPage = () => {
-  const [userDetails, setUserDetails] = useState({
-    firstName: "John",
-    lastName: "Doe",
-    country: "earth",
-    statusBar: false,
-    weeklyDigest: true,
-  });
+  const [email, setEmail] = useState('');
+  const [isOtpVerified, setIsOtpVerified] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserDetails((prevDetails) => ({
-      ...prevDetails,
-      [name]: value,
-    }));
-  };
+  const handleSaveChanges = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setErrorMessage('');
+    setSuccessMessage('');
 
-  const handleToggle = (name) => {
-    setUserDetails((prevDetails) => ({
-      ...prevDetails,
-      [name]: !prevDetails[name],
-    }));
+    // Simulating a successful update for demo purposes
+    setTimeout(() => {
+      if (isOtpVerified) {
+        setSuccessMessage('Email successfully updated!');
+      } else {
+        setErrorMessage('OTP verification failed. Please try again.');
+      }
+      setIsLoading(false);
+    }, 1500);
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-sm bg-white shadow-lg rounded-lg p-6">
-        <h1 className="text-xl font-bold text-center mb-4 text-gray-700">SETTINGS</h1>
-        <div className="text-center mb-6">
-        </div>
-        <form>
-          <div className="mb-4">
-            <label
-              htmlFor="firstName"
-              className="block text-gray-600 font-medium mb-2"
-            >
-              First Name:
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={userDetails.firstName}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="lastName"
-              className="block text-gray-600 font-medium mb-2"
-            >
-              Last Name:
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={userDetails.lastName}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              htmlFor="country"
-              className="block text-gray-600 font-medium mb-2"
-            >
-              Country:
-            </label>
-            <input
-              type="text"
-              id="country"
-              name="country"
-              value={userDetails.country}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <form onSubmit={handleSaveChanges} className="bg-white p-8 shadow-md rounded-md w-[450px]">
+        <h2 className="my-3 text-4xl font-bold text-center">Edit Profile</h2>
+        <p className="text-center text-sm dark:text-gray-600 mb-6">Update your profile details</p>
 
-          {/* Notification Toggles */}
-          <div className="mb-4">
-            <h2 className="text-gray-600 font-medium mb-2">NOTIFICATIONS</h2>
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-gray-600">About Site</span>
-              <button
-                type="button"
-                onClick={() => handleToggle("statusBar")}
-                className={`w-10 h-6 flex items-center rounded-full ${
-                  userDetails.statusBar ? "bg-blue-500" : "bg-gray-300"
-                }`}
-              >
-                <div
-                  className={`w-4 h-4 bg-white rounded-full shadow-md transform ${
-                    userDetails.statusBar ? "translate-x-4" : ""
-                  }`}
-                ></div>
-              </button>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-gray-600">Change Password</span>
-              <button
-                type="button"
-                onClick={() => handleToggle("weeklyDigest")}
-                className={`w-10 h-6 flex items-center rounded-full ${
-                  userDetails.weeklyDigest ? "bg-blue-500" : "bg-gray-300"
-                }`}
-              >
-                <div
-                  className={`w-4 h-4 bg-white rounded-full shadow-md transform ${
-                    userDetails.weeklyDigest ? "translate-x-4" : ""
-                  }`}
-                ></div>
-              </button>
-            </div>
-          </div>
-          <button
-            type="button"
-            onClick={() => alert("Changes saved!")}
-            className="w-full bg-blue-500 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-600 transition-colors"
-          >
-            Save Changes
-          </button>
-        </form>
-      </div>
+        <div className="mb-4">
+          <label className="block text-gray-600 mb-2">Email</label>
+          <EmailInputWithOTP
+            email={email}
+            setEmail={setEmail}
+            isOtpVerified={isOtpVerified}
+            setIsOtpVerified={setIsOtpVerified}
+          />
+        </div>
+
+        {errorMessage && (
+          <p className="mb-4 text-red-500 text-sm">{errorMessage}</p>
+        )}
+        
+        {successMessage && (
+          <p className="mb-4 text-green-500 text-sm">{successMessage}</p>
+        )}
+
+        <button
+          type="submit"
+          disabled={!email || !isOtpVerified || isLoading}
+          className={`w-full py-2 rounded-md text-white ${
+            email && isOtpVerified && !isLoading
+              ? 'bg-navColor hover:bg-darkNavColor'
+              : 'bg-gray-400 cursor-not-allowed'
+          }`}
+        >
+          {isLoading ? 'Saving changes...' : 'Save Changes'}
+        </button>
+      </form>
     </div>
   );
 };

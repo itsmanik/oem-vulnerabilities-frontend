@@ -62,7 +62,7 @@ const App = () => {
           <Route path="/help" element={<HelpPage />} />
 
           <Route path="/details" element={<MoreDetails />} />
-          <Route path="/setting" element={<SettingPage />} />
+          <Route path="/settings" element={<SettingPage />} />
           {/* Fallback Route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
