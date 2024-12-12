@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./TopNav.css"; // Import the CSS for styling
 import { FaUserCircle } from "react-icons/fa";
+import {Link} from "react-router-dom"
 
 const TopNav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -15,24 +16,24 @@ const TopNav = () => {
       <div className="navbar-left">
         <ul className="nav-links flex space-x-6 ml-10">
           <li>
-            <a href="#home" className="hover:text-white transition-colors">
+            <Link to={"/"} className="hover:text-white transition-colors">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#about" className="hover:text-white transition-colors">
+            <Link to="vulns" className="hover:text-white transition-colors">
               Vulnerabilities
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#services" className="hover:text-white transition-colors">
+            <Link to ="feedback" className="hover:text-white transition-colors">
               Feedback
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#services" className="hover:text-white transition-colors">
+            <Link to="help" className="hover:text-white transition-colors">
               Help
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

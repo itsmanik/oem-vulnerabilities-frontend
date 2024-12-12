@@ -12,7 +12,7 @@ const SearchBox = ({ onSearch }) => {
 
   return (
     <div className="mt-4 mb-3">
-      <fieldset className="w-full space-y-1 dark:text-gray-800">
+      <fieldset className="w-full space-y-1 dark:text-gray-800 text-s">
         <label htmlFor="Search" className="hidden">
           Search
         </label>

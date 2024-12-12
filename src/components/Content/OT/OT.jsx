@@ -45,22 +45,22 @@ const Advisories = ({ data }) => {
               return (
                 <Table.Row key={index}>
                   <Table.Cell>
-                    <Text size={"1"}>{item.product_name_version}</Text>
+                    <Text size={"2"}>{item.product_name_version}</Text>
                   </Table.Cell>
                   <Table.Cell>
-                    <Text size={"1"}>{item.vulnerability}</Text>
+                    <Text size={"2"}>{item.vulnerability}</Text>
                   </Table.Cell>
                   <Table.Cell>
-                    <Text size={"1"}>{item.published_date}</Text>
+                    <Text size={"2"}>{item.published_date}</Text>
                   </Table.Cell>
                   <Table.Cell>
-                    <Text size={"1"}>{item.vendor}</Text>
+                    <Text size={"2"}>{item.vendor}</Text>
                   </Table.Cell>
                   <Table.Cell>
-                    <Text size={"1"}>{item.severity_level}</Text>
+                    <Text size={"2"}>{item.severity_level}</Text>
                   </Table.Cell>
                   <Table.Cell>
-                    <Text size={"1"} className="text-blue-500">
+                    <Text size={"2"} className="text-blue-500">
                       <a href="">{item.reference}</a>
                     </Text>
                   </Table.Cell>
