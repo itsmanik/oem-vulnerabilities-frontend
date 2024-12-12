@@ -35,6 +35,11 @@ const TopNav = () => {
               Help
             </Link>
           </li>
+          <li>
+            <Link to="/login" className="hover:text-white transition-colors">
+              Login
+            </Link>
+          </li>
         </ul>
       </div>
 
