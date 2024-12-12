@@ -43,6 +43,7 @@ const App = () => {
 
           <Route path="/scraper" element={<Scraper />} />
           <Route path="/export" element={<ExportData />} />
+          <Route path="/details/:id" element={<MoreDetails />} />
 
           <Route path="/tutorial">
             <Route path="/tutorial" element={<Tutorials />} />
