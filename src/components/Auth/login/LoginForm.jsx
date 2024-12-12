@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axiosInstance from '../../../axios';
 import { useNavigate } from 'react-router-dom';
-
+  ``
 const LoginForm = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -60,10 +60,7 @@ const LoginForm = () => {
               id="email"
               name="email"
               value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-700"
-              required
+              onChange={handleChange}a
             />
           </div>
           {/* Password Field */}
