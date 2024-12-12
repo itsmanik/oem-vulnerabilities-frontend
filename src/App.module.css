@@ -1,5 +1,6 @@
 .main-container {
-    padding: 2rem 1rem 4rem 4rem;
+    padding: 0.5rem 3rem;
     margin-top: 3rem;    
-    background-color: rgb(237, 244, 252);
+    min-height: 100vh;
+    background-color: #edf4fc;
 }

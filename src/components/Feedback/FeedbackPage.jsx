@@ -13,7 +13,8 @@ const FeedbackPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen z- bg-gray-50 p-8">
+      <h1 className="text-4xl font-bold text-gray-800 mb-6">Feedback</h1>
       {submitted ? (
         <div className="bg-green-100 text-green-700 p-4 rounded">
           Thank you for your feedback! We appreciate your input.
