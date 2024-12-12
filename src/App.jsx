@@ -20,6 +20,7 @@ import LogIn from "./components/Auth/Login";
 import AddWebsite from "./components/Admin/AddWebsite";
 import AdminPage from "./components/Admin/AdminPage";
 import HelpPage from "./components/Help/HelpPage";
+import MoreDetails from "./components/Pages/MoreDetails";
 
 const App = () => {
   return (
@@ -36,6 +37,8 @@ const App = () => {
           <Route path="/login" element={<LogIn />} />
 
           <Route path="/addsite" element={<AddWebsite />} />
+
+          <Route path="/details" element={<MoreDetails />} />
 
           <Route path="/scraper" element={<Scraper />} />
           <Route path="/export" element={<ExportData />} />
