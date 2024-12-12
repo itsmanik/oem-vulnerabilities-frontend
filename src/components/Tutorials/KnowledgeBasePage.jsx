@@ -85,7 +85,7 @@ const KnowledgeBasePage = () => {
         {filteredFaqs.length > 0 ? (
           filteredFaqs.map((faq, index) => (
             <div key={index} className="bg-white shadow-md p-6 rounded-lg">
-              <h2 className="text-xl font-semibold text-blue-600">
+              <h2 className="text-xl font-semibold text-navColor">
                 {faq.question}
               </h2>
               <p className="text-gray-600 mt-2">{faq.answer}</p>

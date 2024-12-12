@@ -8,27 +8,36 @@ const SidebarContext = createContext();
 
 export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useState(false);
+
   return (
     <>
-      <aside className="h-screen relative lg:mt-12">
-        <nav className="h-full flex flex-col bg-navColor text-gray-200">
-          <div className="py-4 pb-2 flex justify-between p-2 items-center">
+      {/* Overlay */}
+      {expanded && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setExpanded(false)}
+        ></div>
+      )}
+
+      <aside
+        className={`fixed z-50 h-screen bg-navColor transition-all duration-300 ${
+          expanded ? "w-64" : "w-16"
+        }`}
+      >
+        <nav className="h-full flex flex-col translate-y-14 text-gray-200 relative">
+          <div className="py-4 pb-2 flex justify-center p-2 items-center">
             <span
               className={`overflow-hidden transition-all ml-3 font-medium text-lightWhite ${
-                expanded ? "w-15" : "hidden"
+                expanded ? "block" : "hidden"
               }`}
             >
               Browse
             </span>
             <button
               onClick={() => setExpanded((curr) => !curr)}
-              className="p-1.5 rounded-lg hover:bg-darkGray text-lightWhite"
+              className={`p-1.5 rounded-lg ${expanded && "ml-auto"} hover:bg-darkGray text-lightWhite`}
             >
-              {expanded ? (
-                <ChevronFirst size={20} />
-              ) : (
-                <ChevronLast size={20} />
-              )}
+              {expanded ? <ChevronFirst size={20} /> : <ChevronLast size={20} />}
             </button>
           </div>
 
@@ -53,17 +62,16 @@ export function SidebarItem(props) {
       }
     >
       <li
-        className={`relative flex items-center py-2 px-3 my-1 font-normal rounded-md cursor-pointer transition-colors group ${
+        className={`relative justify-center flex items-center py-2 px-3 my-1 font-normal rounded-md cursor-pointer transition-colors group ${
           isActive
             ? "bg-purpleLogo text-white bg-[rgb(145,71,255)]"
             : "hover:bg-darkGray text-lightWhite"
         }`}
-        onClick={console.log("test")}
       >
         {props.icon}
         <span
           className={`overflow-hidden transition-all text-sm text-nowrap ${
-            expanded ? "w-40 ml-3" : "w-0"
+            expanded ? "w-40 ml-3" : "hidden"
           }`}
         >
           {props.text}

@@ -50,13 +50,13 @@ const MoreDetails = () => {
   };
 
   return (
-    <div className="p-8 bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen">
+    <div className="p-8 bg-gradient-to-b min-h-screen">
       <h1 className="text-3xl font-extrabold text-gray-900 mb-1 text-center">
         Vulnerability Details
       </h1>
       <h3 className="text-center text-lg mb-8 text-gray-700">CV ID: #{product.id}</h3>
 
-      <table className="w-[90%] m-auto bg-white border-collapse shadow-lg rounded-lg overflow-hidden">
+      <table className="w-[90%] m-auto bg-[#edf4fc] border-collapse shadow-lg rounded-lg overflow-hidden">
         <thead className="bg-gray-200">
           <tr>
             <th className="border border-gray-300 px-4 py-2 text-left">Field</th>
