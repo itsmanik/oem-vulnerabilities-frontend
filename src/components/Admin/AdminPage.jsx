@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Line, Pie } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -10,8 +10,17 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import axiosInstance from "../../axios";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const DashboardCard = ({ title, value }) => {
   return (
@@ -70,11 +79,31 @@ const pieChartData = {
 };
 
 const websitesData = [
-  { website: "site-a.com", lastUpdated: "Dec 7, 2024, 10:30 AM", status: "Completed" },
-  { website: "site-b.com", lastUpdated: "Dec 6, 2024, 5:00 PM", status: "Ongoing" },
-  { website: "site-c.com", lastUpdated: "Dec 7, 2024, 9:00 AM", status: "Pending" },
-  { website: "site-d.com", lastUpdated: "Dec 5, 2024, 11:00 AM", status: "Completed" },
-  { website: "site-e.com", lastUpdated: "Dec 7, 2024, 8:30 AM", status: "Pending" },
+  {
+    website: "site-a.com",
+    lastUpdated: "Dec 7, 2024, 10:30 AM",
+    status: "Completed",
+  },
+  {
+    website: "site-b.com",
+    lastUpdated: "Dec 6, 2024, 5:00 PM",
+    status: "Ongoing",
+  },
+  {
+    website: "site-c.com",
+    lastUpdated: "Dec 7, 2024, 9:00 AM",
+    status: "Pending",
+  },
+  {
+    website: "site-d.com",
+    lastUpdated: "Dec 5, 2024, 11:00 AM",
+    status: "Completed",
+  },
+  {
+    website: "site-e.com",
+    lastUpdated: "Dec 7, 2024, 8:30 AM",
+    status: "Pending",
+  },
 ];
 
 const AdminPage = () => {
@@ -92,28 +121,42 @@ const AdminPage = () => {
     "Error 3: Unknown error on site C",
   ];
 
+  const [data, setData] = useState({});
+
+  const fetchData = async () => {
+    try {
+      const response = await axiosInstance.get("/api/admin/dashboard");
+      setData(response.data);
+      // console.log(response.data);
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col px-6 py-8">
+    <div className="min-h-screen mx-4 flex flex-col px-6 py-8">
       <main className="flex-grow container mx-auto space-y-4">
         {currentView === "dashboard" && (
           <div className="space-y-4">
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {dashboardData.map((data, index) => (
-                <DashboardCard key={index} title={data.title} value={data.value} />
+                <DashboardCard
+                  key={index}
+                  title={data.title}
+                  value={data.value}
+                />
               ))}
-            </div>
-
-            <div className="bg-white rounded-lg shadow-sm p-6 w-full lg:w-5/6 xl:w-4/5 mb-6 h-96 flex flex-col justify-center">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4 text-center">Web Scraping Status</h2>
-              <div className="w-full h-full flex justify-center">
-                <Line data={lineChartData} />
-              </div>
             </div>
 
             <div className="lg:flex lg:gap-4 space-y-4 lg:space-y-0">
               <div className="bg-white rounded-lg shadow-sm p-6 w-full lg:w-1/3 flex flex-col justify-center items-center">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">Scrape Status</h2>
+                <h2 className="text-xl font-semibold text-gray-800 mb-4">
+                  Scrape Status
+                </h2>
                 <div className="w-72 h-72">
                   <Pie data={pieChartData} />
                 </div>
@@ -124,48 +167,61 @@ const AdminPage = () => {
               </div>
 
               <div className="bg-white rounded-lg shadow-sm p-6 w-full lg:w-1/3 flex flex-col justify-center items-center">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">Websites Included</h2>
-                <p className="text-3xl font-bold text-indigo-600">{websitesData.length}</p>
+                <h2 className="text-xl font-semibold text-gray-800 mb-4">
+                  Websites Included
+                </h2>
+                <p className="text-3xl font-bold text-indigo-600">
+                  {websitesData.length}
+                </p>
               </div>
             </div>
 
             <div className="bg-white rounded-lg shadow-sm p-6">
-              <h2 className="text-xl font-semibold text-gray-800 mb-4">Websites Included</h2>
+              <h2 className="text-xl font-semibold text-gray-800 mb-4">
+                Websites Included
+              </h2>
               <table className="min-w-full bg-white border border-gray-200">
-  <thead className="bg-gray-100">
-    <tr>
-      <th className="py-3 px-6 text-left text-gray-700">Website</th>
-      <th className="py-3 px-6 text-left text-gray-700">Last Updated</th>
-      <th className="py-3 px-6 text-left text-gray-700">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    {websitesData.map((row, index) => (
-      <tr
-        key={index}
-        className={`border-t ${index % 2 === 0 ? "bg-gray-50" : "bg-white"}`}
-      >
-        <td className="py-3 px-6">{row.website}</td>
-        <td className="py-3 px-6">{row.lastUpdated}</td>
-        <td className="py-3 px-6 flex items-center">
-          <span
-            className={`w-3 h-3 rounded-full mr-2 ${
-              row.status === "Completed"
-                ? "bg-green-500"
-                : row.status === "Pending"
-                ? "bg-red-500"
-                : row.status === "Ongoing"
-                ? "bg-yellow-500"
-                : "bg-gray-300"
-            }`}
-          ></span>
-          {row.status}
-        </td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
+                <thead className="bg-gray-100">
+                  <tr>
+                    <th className="py-3 px-6 text-left text-gray-700">
+                      Website
+                    </th>
+                    <th className="py-3 px-6 text-left text-gray-700">
+                      Last Updated
+                    </th>
+                    <th className="py-3 px-6 text-left text-gray-700">
+                      Status
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {websitesData.map((row, index) => (
+                    <tr
+                      key={index}
+                      className={`border-t ${
+                        index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                      }`}
+                    >
+                      <td className="py-3 px-6">{row.website}</td>
+                      <td className="py-3 px-6">{row.lastUpdated}</td>
+                      <td className="py-3 px-6 flex items-center">
+                        <span
+                          className={`w-3 h-3 rounded-full mr-2 ${
+                            row.status === "Completed"
+                              ? "bg-green-500"
+                              : row.status === "Pending"
+                              ? "bg-red-500"
+                              : row.status === "Ongoing"
+                              ? "bg-yellow-500"
+                              : "bg-gray-300"
+                          }`}
+                        ></span>
+                        {row.status}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         )}
