@@ -62,7 +62,7 @@ const EmailInputWithOTP = ({ email, setEmail, isOtpVerified, setIsOtpVerified })
           onClick={handleSendOtp}
           disabled={isLoading}
           className={`mt-2 px-4 py-2 ${
-            isLoading ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'
+            isLoading ? 'bg-gray-400' : 'bg-navColor hover:bg-darkNavColor'
           } text-white rounded-md`}
         >
           {isLoading ? 'Sending...' : 'Send OTP'}
