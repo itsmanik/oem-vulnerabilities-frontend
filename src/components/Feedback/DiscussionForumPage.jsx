@@ -120,12 +120,12 @@ const DiscussionForumPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gray-100 p-8 w-[750px] m-auto">
       <h1 className="text-4xl font-bold text-gray-800 mb-6">Discussion Forums</h1>
       {selectedThread ? (
         <div>
           <button
-            className="text-blue-500 underline mb-4"
+            className="text-#3f3f7e-500 underline mb-4"
             onClick={() => setSelectedThread(null)}
           >
             Back to Threads
@@ -149,20 +149,6 @@ const DiscussionForumPage = () => {
                 <p className="text-sm text-gray-500 mt-1">
                   {new Date(comment.timestamp).toLocaleString()}
                 </p>
-                <div className="flex items-center space-x-4 mt-2 absolute right-4 top-4">
-                  <button
-                    className="bg-green-500 text-white px-2 py-1 rounded"
-                    onClick={() => handleVote(selectedThread.id, index, 'upvote')}
-                  >
-                    👍 {comment.upvotes}
-                  </button>
-                  <button
-                    className="bg-red-500 text-white px-2 py-1 rounded"
-                    onClick={() => handleVote(selectedThread.id, index, 'downvote')}
-                  >
-                    👎 {comment.downvotes}
-                  </button>
-                </div>
               </div>
             ))}
           </div>
