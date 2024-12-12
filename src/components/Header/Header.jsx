@@ -7,7 +7,10 @@ const Header = ({ onSearch, onSortChange }) => {
       <Heading className="pb-2">Vulnerability Report</Heading>
       <hr className="pb-3" />
       <Text size={"3"}>
-      Welcome to the Vulnerability Report page, where we provide a detailed overview of all critical and high-severity vulnerabilities identified in IT and OT equipment. This comprehensive list is sourced directly from official OEM platforms and other relevant web sources, ensuring accurate and timely information. Each entry includes key details such as vulnerability descriptions, severity levels, and recommended mitigation strategies to help organizations address potential risks effectively.
+        Welcome to the Vulnerability Report page, offering critical and
+        high-severity vulnerabilities in IT and OT equipment, sourced from OEM
+        platforms and relevant sources, with key details and mitigation
+        strategies.
       </Text>
       <div className="flex text-xs items-center gap-4 mt-4 text-gray-500">
         <SearchBox onSearch={onSearch} />
@@ -15,7 +18,9 @@ const Header = ({ onSearch, onSortChange }) => {
           className="border rounded translate-y-1 px-3 py-2"
           onChange={(e) => onSortChange(e.target.value)}
         >
-          <option value="" className="">Sort by...</option>
+          <option value="" className="">
+            Sort by...
+          </option>
           <option value="severity">Severity Level</option>
           <option value="vendor">Vendor</option>
           <option value="publishedDate">Published Date</option>

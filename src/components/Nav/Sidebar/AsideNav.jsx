@@ -37,29 +37,29 @@ const AsideNav = () => {
             text="FAQ"
             location="/knowledge-base"
           />
-          <SidebarItem
+          {/* <SidebarItem
             icon={<GraduationCap size={20} />}
             text="Tutorials"
             location="/tutorial"
             batch
-          />
+          /> */}
           <SidebarItem
             icon={<FilePen size={20} />}
             text="FeedBack"
             location="/feedback"
           />
-        <SidebarItem
+        {/* <SidebarItem
             icon={<FlagTriangleRight size={20} />}
             text="Report Vulnerability"
             location="/report"
-          /> 
+          />  */}
 
 
-          <SidebarItem
+          {/* <SidebarItem
             icon={<NotebookTabs size={20} />}
             text="Scraping Details"
             location="/scraper"
-          />
+          /> */}
           <SidebarItem
             icon={<Waves size={20} />}
             text="Threads"
