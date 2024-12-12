@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import axiosInstance from '../../axios'; // Import your axios instance
+import { Link } from "react-router-dom"
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -96,13 +97,13 @@ const Login = () => {
             </button>
             <p className="px-6 text-sm text-center dark:text-gray-600">
               Don't have an account yet?{' '}
-              <a
+              <Link
                 rel="noopener noreferrer"
-                href="#"
+                to={"/register"}
                 className="hover:underline dark:text-violet-600"
               >
                 Sign up
-              </a>
+              </Link>
               .
             </p>
           </div>
