@@ -32,8 +32,9 @@ const Register = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <form onSubmit={handleRegister} className="bg-white p-8 shadow-md rounded-md">
-        <h2 className="text-2xl font-bold mb-6 text-gray-700">Register</h2>
+      <form onSubmit={handleRegister} className="bg-white p-8 shadow-md rounded-md w-[450px]">
+        <h2 className="my-3 text-4xl font-bold text-center">Register</h2>
+        <p className="text-center text-sm dark:text-gray-600 mb-6">Create an account to continue</p>
 
         <div className="mb-4">
           <label className="block text-gray-600 mb-2">Username</label>
@@ -73,7 +74,7 @@ const Register = () => {
           disabled={!username || !email || !password || !isOtpVerified || isLoading}
           className={`w-full py-2 rounded-md text-white ${
             username && email && password && isOtpVerified && !isLoading
-              ? 'bg-blue-500 hover:bg-blue-600'
+              ? 'bg-navColor hover:bg-darkNavColor'
               : 'bg-gray-400 cursor-not-allowed'
           }`}
         >
