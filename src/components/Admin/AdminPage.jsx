@@ -17,7 +17,7 @@ const DashboardCard = ({ title, value }) => {
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm flex flex-col justify-center items-center space-y-4 transition-transform transform hover:scale-105 hover:shadow-md">
       <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-      <p className="text-2xl font-bold text-indigo-600">{value}</p>
+      <p className="text-2xl font-bold text-gray-500">{value}</p>
     </div>
   );
 };
@@ -150,12 +150,12 @@ const AdminPage = () => {
         <td className="py-3 px-6 flex items-center">
           <span
             className={`w-3 h-3 rounded-full mr-2 ${
-              row.status === "High"
-                ? "bg-orange-500"
-                : row.status === "Medium"
-                ? "bg-yellow-500"
-                : row.status === "Critical"
+              row.status === "Completed"
+                ? "bg-green-500"
+                : row.status === "Pending"
                 ? "bg-red-500"
+                : row.status === "Ongoing"
+                ? "bg-yellow-500"
                 : "bg-gray-300"
             }`}
           ></span>

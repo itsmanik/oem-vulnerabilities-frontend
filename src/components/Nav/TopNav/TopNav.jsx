@@ -4,7 +4,7 @@ import { FaUserCircle } from "react-icons/fa";
 
 const TopNav = () => {
   return (
-    <nav className="navbar fixed top-0 left-0 w-full bg-navColor shadow-md flex justify-between items-center px-6 py-4 text-gray-200">
+    <nav className="navbar z-50 fixed top-0 left-0 w-full bg-navColor shadow-md flex justify-between items-center px-6 py-4 text-gray-200">
       {/* Left Section: Navigation Links */}
       <div className="navbar-left">
         <ul className="nav-links flex space-x-6 ml-10">
@@ -15,17 +15,17 @@ const TopNav = () => {
           </li>
           <li>
             <a href="#about" className="hover:text-white transition-colors">
-              Security Updates
+              Vulnerabilities
             </a>
           </li>
           <li>
             <a href="#services" className="hover:text-white transition-colors">
-              Acknowledgements
+              Feedback
             </a>
           </li>
           <li>
             <a href="#services" className="hover:text-white transition-colors">
-              Updates
+              Help
             </a>
           </li>
         </ul>
